@@ -10,6 +10,7 @@ import (
 )
 
 func main() {
+	//This tool expects the user to have first run the initSession tool
 	temp, err := ioutil.ReadFile("./.nv-session.json")
 	if err != nil {
 		log.Fatalln(err)

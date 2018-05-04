@@ -10,7 +10,9 @@ import (
 	"github.com/DisplaySweet/portal-go/src"
 )
 
+//TODO: singular listing endpoint is WIP
 func main() {
+	//This tool expects the user to have first run the initSession tool
 	temp, err := ioutil.ReadFile("./.nv-session.json")
 	if err != nil {
 		log.Fatalln(err)
@@ -32,7 +34,7 @@ func main() {
 func getListingInfo(id string, s *portal.Session) (string, error) {
 	listing, err := s.GetListingByID(id)
 	if err != nil {
-		return nil, err
+		return "", err
 	}
 
 	str := fmt.Sprintf(
