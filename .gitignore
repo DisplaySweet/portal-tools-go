@@ -12,3 +12,12 @@
 
 # Project-local glide cache, RE: https://github.com/Masterminds/glide/issues/736
 .glide/
+
+--SRC FILES--
+/src/companies.txt
+/src/BMstaging_Creds.json
+/src/.nv-session.json
+
+--ROOT FILES--
+/cmds.txt
+/Tool List.txt
