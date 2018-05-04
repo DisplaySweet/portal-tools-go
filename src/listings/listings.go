@@ -10,7 +10,6 @@ import (
 )
 
 func main() {
-
 	temp, err := ioutil.ReadFile("./.nv-session.json")
 	if err != nil {
 		log.Fatalln(err)
@@ -18,30 +17,33 @@ func main() {
 	s := &portal.Session{}
 	json.Unmarshal(temp, s)
 
-	companyNames, err := returnProspectBuyers(s)
+	listings, err := getListingsInfo(s)
 	if err != nil {
 		log.Fatalln(err)
 	}
-	for _, company := range companyNames {
-		fmt.Println(company)
+
+	for _, listing := range listings {
+		fmt.Println(listing)
 	}
 }
 
-func returnProspectBuyers(s *portal.Session) ([]string, error) {
+func getListingsInfo(s *portal.Session) ([]string, error) {
 
-	pb, err := s.GetProspectBuyers()
+	listings, err := s.GetListings()
 	if err != nil {
 		return nil, err
 	}
 
 	list := make([]string, 0, 0)
 
-	for _, buyer := range pb {
+	for _, listing := range listings {
 		str := fmt.Sprintf(
-			"%v : %v %v",
-			buyer.ID,
-			buyer.Firstname,
-			buyer.Lastname)
+			"%v : %v, %v, $%v",
+			listing.ID,
+			listing.Name,
+			listing.Availability,
+			listing.Price)
+
 		list = append(list, str)
 	}
 

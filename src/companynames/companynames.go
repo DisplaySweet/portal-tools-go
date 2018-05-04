@@ -17,7 +17,7 @@ func main() {
 	}
 	s := &portal.Session{}
 	json.Unmarshal(temp, s)
-	companyNames, err := returnCompanyNamesIDs(s)
+	companyNames, err := getCompanyNamesIDs(s)
 	if err != nil {
 		log.Fatalln(err)
 	}
@@ -26,7 +26,7 @@ func main() {
 	}
 }
 
-func returnCompanyNamesIDs(s *portal.Session) ([]string, error) {
+func getCompanyNamesIDs(s *portal.Session) ([]string, error) {
 
 	companies, err := s.GetAllCompanies()
 	if err != nil {
@@ -36,7 +36,10 @@ func returnCompanyNamesIDs(s *portal.Session) ([]string, error) {
 	list := make([]string, 0, 0)
 
 	for _, company := range companies {
-		str := fmt.Sprintf("%v : %v", company.ID, company.Name)
+		str := fmt.Sprintf(
+			"%v : %v",
+			company.ID,
+			company.Name)
 		list = append(list, str)
 	}
 
