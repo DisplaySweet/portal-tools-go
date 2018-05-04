@@ -1,0 +1,2 @@
+#!/usr/bin/env bash f
+cat ./BMstaging_Creds.json | go run ./initsession/initsession.go >./.nv-session.json; go run ./companynames/companynames.go >./companies.txt

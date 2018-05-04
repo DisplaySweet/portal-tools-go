@@ -17,6 +17,7 @@
 /src/companies.txt
 /src/BMstaging_Creds.json
 /src/.nv-session.json
+/src/.user_creds.json
 
 --ROOT FILES--
 /cmds.txt
