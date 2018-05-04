@@ -9,7 +9,7 @@ import (
 )
 
 func main() {
-	temp, err := ioutil.ReadFile("./.user-creds.json")
+	temp, err := ioutil.ReadFile("./.user_creds.json")
 	if err != nil {
 		log.Fatalln(err)
 	}
@@ -23,7 +23,7 @@ func main() {
 	s := &portal.Session{}
 	json.Unmarshal(temp, s)
 
-	err = s.AuthAsUser(ua)
+	headers, err = s.AuthAsUser(ua)
 	if err != nil {
 		log.Fatalln(err)
 	}
