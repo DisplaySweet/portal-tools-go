@@ -15,6 +15,7 @@
 
 --SRC FILES--
 /src/companies.txt
+/src/companyget.txt
 /src/listings.txt
 /src/.listing.json
 /src/BMstaging_Creds.json
