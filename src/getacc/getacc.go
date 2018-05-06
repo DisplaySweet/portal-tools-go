@@ -19,6 +19,7 @@ func main() {
 	s := &portal.Session{}
 	json.Unmarshal(temp, s)
 
+	//This tool expects an ID of an acocunt to be piped | through CLI
 	bytes, err := ioutil.ReadAll(os.Stdin)
 	id := string(bytes)
 
