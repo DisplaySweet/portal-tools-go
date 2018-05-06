@@ -28,6 +28,8 @@ func main() {
 	}
 }
 
+//This tool should really only return a limited set of information,
+//whereas an individual getAccount(id) should return all.
 func getAccounts(s *portal.Session) ([]string, error) {
 
 	accounts, err := s.GetAllAccounts()
