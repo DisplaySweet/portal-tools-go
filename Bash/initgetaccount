@@ -1,2 +1,2 @@
 #!/usr/bin/env bash
-cat ./BMstaging_Creds.json | go run ./initsession/initsession.go >./.nv-session.json; go run ./getAcc/getaccounts.go >./.nv-account.txt
+cat ./BMstaging_Creds.json | go run ./sessionInit/initsession.go >./.nv-session.json; echo "[PIPE YOUR ACC ID HERE]" | go run ./accountGetOne/getaccount.go >./.nv-account.txt
