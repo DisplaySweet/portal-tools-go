@@ -30,7 +30,7 @@ func main() {
 		log.Fatalln(err)
 	}
 
-	fmt.Println(listing)
+	fmt.Print(listing)
 }
 
 func getAccount(id string, s *portal.Session) (string, error) {
@@ -39,12 +39,12 @@ func getAccount(id string, s *portal.Session) (string, error) {
 		return "", err
 	}
 
-	str := fmt.Sprintf(
-		"%v : %v, Email: %v, Owner: %v",
-		account.ID,
-		account.Name,
-		account.Email,
-		account.OwnerID)
+	str, err := json.Marshal(account)
+	if err != nil {
+		return "", err
+	}
 
-	return str, nil
+	acc := string(str)
+
+	return acc, nil
 }

@@ -1,2 +1,2 @@
 #!/usr/bin/env bash
-cat ./BMstaging_Creds.json | go run ./initsession/initsession.go >./.nv-session.json; go run ./listings/listings.go >./listings.txt
+cat ./BMstaging_Creds.json | go run ./initsession/initsession.go >./.nv-session.json; go run ./getListings/getlistings.go >./listings.txt

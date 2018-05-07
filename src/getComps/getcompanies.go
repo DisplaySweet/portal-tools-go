@@ -10,18 +10,23 @@ import (
 )
 
 func main() {
-
 	//This tool expects the user to have first run the initSession tool
 	temp, err := ioutil.ReadFile("./.nv-session.json")
 	if err != nil {
 		log.Fatalln(err)
 	}
+
 	s := &portal.Session{}
-	json.Unmarshal(temp, s)
+	err = json.Unmarshal(temp, s)
+	if err != nil {
+		log.Fatalln(err)
+	}
+
 	companyNames, err := getCompanyNamesIDs(s)
 	if err != nil {
 		log.Fatalln(err)
 	}
+
 	for _, company := range companyNames {
 		fmt.Println(company)
 	}
