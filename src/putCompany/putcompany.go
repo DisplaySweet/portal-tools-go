@@ -9,23 +9,11 @@ import (
 )
 
 func main() {
-	//This tool expects the user to have first run the initSession tool
-	temp, err := ioutil.ReadFile("./.nv-session.json")
-	if err != nil {
-		log.Fatalln(err)
-	}
-
-	s := &portal.Session{}
-	err = json.Unmarshal(temp, s)
-	if err != nil {
-		log.Fatalln(err)
-	}
-
 	//This tool expects the user to have a json formatted
 	//company file for the company they desire to update on the portal
 	//which you have retrieved with the getCompany tool.
 	//the file must be manually edited with the changes you wish to update
-	temp, err = ioutil.ReadFile("./.nv-company.json")
+	temp, err := ioutil.ReadFile("./.nv-company.json")
 	if err != nil {
 		log.Fatalln(err)
 	}
@@ -36,13 +24,13 @@ func main() {
 		log.Fatalln(err)
 	}
 
-	err = updateCompany(c, s)
+	err = updateCompany(c)
 	if err != nil {
 		log.Fatalln(err)
 	}
 }
 
-func updateCompany(c *portal.Company, s *portal.Session) error {
+func updateCompany(c *portal.Company) error {
 	err := c.Update()
 	if err != nil {
 		return err
