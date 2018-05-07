@@ -25,6 +25,8 @@
 /src/.user_creds.json
 /src/.nv-auth.json
 /src/.nv-company.json
+/src/.nv-createcompany.json
+/src/.nv-delcompany.json
 
 --ROOT FILES--
 /cmds.txt

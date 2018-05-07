@@ -2,15 +2,14 @@ package main
 
 import (
 	"encoding/json"
-	"fmt"
 	"io/ioutil"
 	"log"
 
 	"github.com/DisplaySweet/portal-go/src"
 )
 
-//TODO: this tool should be correct, however the backend needs to be updated
-//Check this tool at a later date to confirm working status
+//TODO: still need to test this tool once the create
+//tool successfully posts a new test company
 func main() {
 	//This tool expects the user to have first run the initSession tool
 	temp, err := ioutil.ReadFile("./.nv-session.json")
@@ -25,8 +24,9 @@ func main() {
 	}
 
 	//This tool expects the user to have a json formatted
-	//company file for the company they desire to create on the portal
-	temp, err = ioutil.ReadFile("./.nv-createcompany.json")
+	//company file for the company they desire to delete on the portal
+	//which you likely have retrieved with the getCompany tool.
+	temp, err = ioutil.ReadFile("./.nv-delcompany.json")
 	if err != nil {
 		log.Fatalln(err)
 	}
@@ -37,26 +37,17 @@ func main() {
 		log.Fatalln(err)
 	}
 
-	company, err := createCompany(c, s)
+	err = deleteCompany(c, s)
 	if err != nil {
 		log.Fatalln(err)
 	}
-
-	fmt.Println(company)
 }
 
-func createCompany(c *portal.Company, s *portal.Session) (string, error) {
-	result, err := s.CreateCompany(c)
+func deleteCompany(c *portal.Company, s *portal.Session) error {
+	err := c.Delete()
 	if err != nil {
-		return "", err
+		return err
 	}
 
-	str, err := json.MarshalIndent(result, "", "\t")
-	if err != nil {
-		return "", err
-	}
-
-	company := string(str)
-
-	return company, nil
+	return nil
 }
