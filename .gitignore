@@ -19,6 +19,7 @@
 /src/listings.txt
 /src/accounts.txt
 /src/listingtest.txt
+/src/companyaccountscontacts.txt
 /src/.listing.json
 /src/BMstaging_Creds.json
 /src/.nv-session.json
@@ -27,6 +28,7 @@
 /src/.nv-company.json
 /src/.nv-createcompany.json
 /src/.nv-delcompany.json
+/src/.nv-companyuserlist.json
 
 --ROOT FILES--
 /cmds.txt
