@@ -16,21 +16,29 @@ func main() {
 	if err != nil {
 		log.Fatalln(err)
 	}
+
 	s := &portal.Session{}
 	json.Unmarshal(temp, s)
+	if err != nil {
+		log.Fatalln(err)
+	}
 
 	//This tool expects an ID of an account to be piped | through CLI
 	//this can be done be first using getAccounts, finding the acc you want
 	//and using it's ID
 	bytes, err := ioutil.ReadAll(os.Stdin)
-	id := string(bytes)
-
-	listing, err := getAccount(id, s)
 	if err != nil {
 		log.Fatalln(err)
 	}
 
-	fmt.Print(listing)
+	id := string(bytes)
+
+	account, err := getAccount(id, s)
+	if err != nil {
+		log.Fatalln(err)
+	}
+
+	fmt.Print(account)
 }
 
 func getAccount(id string, s *portal.Session) (string, error) {
@@ -39,7 +47,7 @@ func getAccount(id string, s *portal.Session) (string, error) {
 		return "", err
 	}
 
-	str, err := json.Marshal(account)
+	str, err := json.MarshalIndent(account, "", "\t")
 	if err != nil {
 		return "", err
 	}

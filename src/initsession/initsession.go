@@ -23,6 +23,9 @@ func main() {
 	//You should then output the stdout of the package to a file
 	// 	cat creds.json | initSession.go > .nv-session
 	bytes, err := ioutil.ReadAll(os.Stdin)
+	if err != nil {
+		log.Fatalln(err)
+	}
 
 	creds := &Config{}
 	err = json.Unmarshal(bytes, creds)
@@ -37,16 +40,12 @@ func main() {
 	}
 
 	s := &portal.Session{
-		Project: portal.Project{
-			ID: creds.APIp,
-		},
-		Company: portal.Company{
-			ID: creds.APIc,
-		},
-		Auth: *a,
+		ProjectID: creds.APIp,
+		CompanyID: creds.APIc,
+		Auth:      *a,
 	}
 
-	minifiedSession, err := json.Marshal(s)
+	minifiedSession, err := json.MarshalIndent(s, "", "\t")
 	if err != nil {
 		log.Fatalln(err)
 	}

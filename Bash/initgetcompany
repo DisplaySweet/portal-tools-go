@@ -1,2 +1,2 @@
 #!/usr/bin/env bash
-cat ./BMstaging_Creds.json | go run ./initsession/initsession.go >./.nv-session.json; echo "088993bf-e4a3-4251-b126-079ea13bdd49" | go run ./getComp/getcompany.go > ./companyget.txt
+cat ./BMstaging_Creds.json | go run ./initsession/initsession.go >./.nv-session.json; echo "1fe39d28-b019-413b-83cb-2de2146f4fb8" | go run ./getComp/getcompany.go > ./.nv-company.json

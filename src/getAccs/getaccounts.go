@@ -15,8 +15,12 @@ func main() {
 	if err != nil {
 		log.Fatalln(err)
 	}
+
 	s := &portal.Session{}
 	json.Unmarshal(temp, s)
+	if err != nil {
+		log.Fatalln(err)
+	}
 
 	listings, err := getAccounts(s)
 	if err != nil {
@@ -41,12 +45,9 @@ func getAccounts(s *portal.Session) ([]string, error) {
 
 	for _, account := range accounts {
 		str := fmt.Sprintf(
-			"%v : %v, Email: %v, Owner: %v",
+			"%v : %v",
 			account.ID,
-			account.Name,
-			account.Email,
-			account.OwnerID)
-
+			account.Name)
 		list = append(list, str)
 	}
 

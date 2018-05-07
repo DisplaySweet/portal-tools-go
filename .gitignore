@@ -17,11 +17,14 @@
 /src/companies.txt
 /src/companyget.txt
 /src/listings.txt
+/src/accounts.txt
+/src/listingtest.txt
 /src/.listing.json
 /src/BMstaging_Creds.json
 /src/.nv-session.json
 /src/.user_creds.json
 /src/.nv-auth.json
+/src/.nv-company.json
 
 --ROOT FILES--
 /cmds.txt

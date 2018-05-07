@@ -16,13 +16,18 @@ func main() {
 	if err != nil {
 		log.Fatalln(err)
 	}
+
 	s := &portal.Session{}
 	json.Unmarshal(temp, s)
+	if err != nil {
+		log.Fatalln(err)
+	}
 
 	companyNames, err := returnProspectBuyers(s)
 	if err != nil {
 		log.Fatalln(err)
 	}
+
 	for _, company := range companyNames {
 		fmt.Println(company)
 	}

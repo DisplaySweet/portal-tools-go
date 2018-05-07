@@ -17,10 +17,18 @@ func main() {
 	if err != nil {
 		log.Fatalln(err)
 	}
+
 	s := &portal.Session{}
 	json.Unmarshal(temp, s)
+	if err != nil {
+		log.Fatalln(err)
+	}
 
 	bytes, err := ioutil.ReadAll(os.Stdin)
+	if err != nil {
+		log.Fatalln(err)
+	}
+
 	id := string(bytes)
 
 	listing, err := getListingInfo(id, s)
@@ -32,17 +40,17 @@ func main() {
 }
 
 func getListingInfo(id string, s *portal.Session) (string, error) {
-	listing, err := s.GetListingByID(id)
+	temp, err := s.GetListingByID(id)
 	if err != nil {
 		return "", err
 	}
 
-	str := fmt.Sprintf(
-		"%v : %v, %v, $%v",
-		listing.ID,
-		listing.Name,
-		listing.Availability,
-		listing.Price)
+	str, err := json.MarshalIndent(temp, "", "\t")
+	if err != nil {
+		return "", err
+	}
 
-	return str, nil
+	listing := string(str)
+
+	return listing, nil
 }

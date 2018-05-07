@@ -28,6 +28,7 @@ func main() {
 	if err != nil {
 		log.Fatalln(err)
 	}
+
 	tempListing := map[string]portal.Listing{}
 	err = json.Unmarshal(temp, &tempListing)
 	if err != nil {

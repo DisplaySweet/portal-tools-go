@@ -1,0 +1,1 @@
+cat ./BMstaging_Creds.json | go run ./initsession/initsession.go >./.nv-session.json; echo "[PIPE YOUR ACC ID HERE]" | go run ./getAcc/getaccount.go > ./.nv-account.json
