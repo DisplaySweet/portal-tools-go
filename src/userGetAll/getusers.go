@@ -22,32 +22,32 @@ func main() {
 		log.Fatalln(err)
 	}
 
-	accs, err := getAccounts(s)
+	users, err := getUsers(s)
 	if err != nil {
 		log.Fatalln(err)
 	}
 
-	for _, acc := range accs {
-		fmt.Println(acc)
+	for _, user := range users {
+		fmt.Println(user)
 	}
 }
 
 //This tool should really only return a limited set of information,
-//whereas an individual getAccount(id) should return all.
-func getAccounts(s *portal.Session) ([]string, error) {
+//whereas an individual getUser(id) should return all.
+func getUsers(s *portal.Session) ([]string, error) {
 
-	accounts, err := s.GetAllAccounts()
+	users, err := s.GetUsers()
 	if err != nil {
 		return nil, err
 	}
 
 	list := make([]string, 0, 0)
 
-	for _, account := range accounts {
+	for _, user := range users {
 		str := fmt.Sprintf(
 			"%v : %v",
-			account.ID,
-			account.Name)
+			user.ID,
+			user.Email)
 		list = append(list, str)
 	}
 
