@@ -1,0 +1,2 @@
+#!/usr/bin/env bash
+cat ./BMstaging_Creds.json | go run ./sessionInit/initsession.go > ./.nv-session.json

@@ -5,8 +5,7 @@ import (
 	"fmt"
 	"io/ioutil"
 	"log"
-
-	"github.com/DisplaySweet/portal-go/src"
+	portal "portal-go/src"
 )
 
 func main() {
@@ -22,7 +21,7 @@ func main() {
 		log.Fatalln(err)
 	}
 
-	users, err := getUsers(s)
+	users, err := getEOIUsers(s)
 	if err != nil {
 		log.Fatalln(err)
 	}
@@ -32,20 +31,18 @@ func main() {
 	}
 }
 
-//This tool should really only return a limited set of information,
-//whereas an individual getUser(id) should return all.
-func getUsers(s *portal.Session) ([]string, error) {
-
-	users, err := s.GetUsers()
+func getEOIUsers(s *portal.Session) ([]string, error) {
+	users, err := s.GetEOIUsers()
 	if err != nil {
 		return nil, err
 	}
 
 	list := make([]string, 0, 0)
+	list = append(list, "EOI USERS")
 
 	for _, user := range users {
 		str := fmt.Sprintf(
-			"%v : %v",
+			"\t%v : %v",
 			user.ID,
 			user.Email,
 		)
