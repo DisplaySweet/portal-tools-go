@@ -35,6 +35,7 @@ func main() {
 
 	a := &portal.Auth{
 		APIKey:         creds.APIt,
+		UserAPIKey:     creds.APIt,
 		Company:        "",
 		PortalEndpoint: creds.URL,
 	}
