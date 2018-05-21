@@ -41,9 +41,10 @@ func main() {
 	}
 
 	s := &portal.Session{
-		ProjectID: creds.APIp,
-		CompanyID: creds.APIc,
-		Auth:      *a,
+		ProjectID:         creds.APIp,
+		CompanyID:         creds.APIc,
+		Auth:              *a,
+		DumpErrorPayloads: false,
 	}
 
 	minifiedSession, err := json.MarshalIndent(s, "", "\t")
