@@ -24,13 +24,13 @@ func main() {
 	// 	cat creds.json | initSession.go > .nv-session
 	bytes, err := ioutil.ReadAll(os.Stdin)
 	if err != nil {
-		log.Fatalln(err)
+		log.Fatalf("Error reading stdin: %v", err)
 	}
 
 	creds := &Config{}
 	err = json.Unmarshal(bytes, creds)
 	if err != nil {
-		log.Fatalln(err)
+		log.Fatalf("Error decoding JSON: %v. Payload was:\n%v", err, string(bytes))
 	}
 
 	a := &portal.Auth{
@@ -48,7 +48,7 @@ func main() {
 
 	minifiedSession, err := json.MarshalIndent(s, "", "\t")
 	if err != nil {
-		log.Fatalln(err)
+		log.Fatalf("Error when beautifying output: %v", err)
 	}
 
 	fmt.Print(string(minifiedSession))
