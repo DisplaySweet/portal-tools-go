@@ -56,7 +56,7 @@ func createUser(u *portal.User, s *portal.Session) (string, error) {
 		return "", err
 	}
 
-	company := string(str)
+	user := string(str)
 
-	return company, nil
+	return user, nil
 }
